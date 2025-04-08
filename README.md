@@ -1,6 +1,9 @@
 # LangGraph_playground
 This repository is a study case in basic concepts at LangGraph framework following the quickstart documantation and first tutorials
 
+<img src="https://exemplo.com/logo.png" alt="Logo da Minha Empresa" style="width: 50%; height: auto;">
+
+
 ## 🚀 Technologies Used
 
 - **Python** 🐍
