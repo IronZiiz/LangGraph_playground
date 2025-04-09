@@ -1,8 +1,13 @@
+
 # Importa bibliotecas padrão
 import os
 import getpass
 from dotenv import load_dotenv  # Biblioteca para carregar variáveis de ambiente de um arquivo .env
-
+#---------------------------------------------------
+'''
+Parte para carregar as chaves API DO PROJETO
+'''
+#---------------------------------------------------
 # Carrega as variáveis do arquivo .env 
 load_dotenv()
 
@@ -19,6 +24,9 @@ if not os.getenv("TOGETHER_API_KEY"):
 api_key = os.getenv("TOGETHER_API_KEY")
 print("Chave carregada com sucesso!" if api_key else "Erro: chave não carregada.")
 
+
+#---------------------------------------------------
+#---------------------------------------------------
 # Tipagem e ferramentas para criação de grafos de estado
 from typing import Annotated 
 from typing_extensions import TypedDict
@@ -30,21 +38,29 @@ class State(TypedDict):
     messages: Annotated[list, add_messages]
 
 # Cria o builder do grafo
-graph_builder = StateGraph(State)
+graph_builder = StateGraph(State) # define o tipo do grafo como machine state
+#---------------------------------------------------
+#---------------------------------------------------
 
+
+# Usado para conectar com alguma llm especifica
 from langchain_together import ChatTogether
 
+
 llm = ChatTogether(
-    model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo-classifier",
-    together_api_key=api_key,
-    temperature=0
+    model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo-classifier", # Nome do modelo
+    together_api_key=api_key, # Chave da API
+    temperature=0 # tornando o modelo mais determinístico. se você der o mesmo imput, ele retorna o mesmo output
 )
 # Define o nó do chatbot
+# Essa função é chamada quando o nó é ativado e recebe um estado como input, entçao retorna um dicionario contendo 
+# uma nova lista de mensagens sobre a chave messages. (Padrão basico para funçẽs node do langgraph)
 def chatbot(state: State):
-    return {"messages": [llm.invoke(state["messages"])]}
+    return {"messages": [llm.invoke(state["messages"])]} 
 
 # Adiciona o nó e conexões
-graph_builder.add_node("chatbot", chatbot)
+graph_builder.add_node("chatbot", chatbot) # O primeiro argumento é o nome do nó, o segundo é a função que será chamada quando o nó for ativado
+# Adiciona o nó inicial e final
 graph_builder.add_edge(START, "chatbot")
 graph_builder.add_edge("chatbot", END)
 
