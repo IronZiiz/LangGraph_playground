@@ -33,8 +33,8 @@ To use Together.ai's models, you must have a Together.ai account and obtain your
     - `chat_bot_EN.py` – Basic chatbot example using LangGraph (English version).
     - `chat_bot_PT-BR.py` – Basic chatbot example using LangGraph (Portuguese version).
 
-  - **`Chat-bot_Integration/`**
-    - `chat_bot_integration.py` – Chatbot integrated with external tools (Portuguese).
+  - **`Chat-bot_Integrate-web/`**
+    - `chat_bot_integrate.py` – Chatbot integrated with external tools (Portuguese).
     - `chat_bot_integration_EN.py` – Chatbot integrated with external tools (English).
     - `ui_web_app_integration.py` – Simple web app UI for interacting with the integrated chatbot.
 
