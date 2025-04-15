@@ -1,5 +1,5 @@
 # LangGraph_playground
-This repository is a study case in basic concepts at LangGraph framework following the quickstart documantation and first tutorials
+This repository is a study case in basic concepts at LangGraph framework following the quickstart documantation and first tutorials. Here you can follow all my steps and CREATE your First CHAT BOT with complete integration with examples of visual interface (stream lit web app)
 
 <img src="https://github.com/IronZiiz/LangGraph_playground/blob/main/langgraph-logo_brandlogos.net_nezpd.png" alt="Logo langgrapg" style="width: 50%; height: auto;">
 
